@@ -1,5 +1,6 @@
-<div class="container mt-5">
-  <%= simple_form_for [ @booking ] do |f| %>
+<div class="container mt-5 form">
+  <h1 class="title">Edit Booking</h1>
+  <%= simple_form_for [@bike, @booking] do |f| %>
     <%= f.input :start_date %>
     <%= f.input :end_date %>
     <%= f.submit "Edit booking", class: "btn btn-outline-primary" %>
@@ -9,6 +10,8 @@
             method: :delete,
             data: { confirm: "Are you sure?" }, class: "btn btn-outline-primary btn-sm mt-3" %>
   <div>
-    <%= link_to 'Back', bikes_path, class: "btn btn-outline-primary btn-sm mt-3"%>
+    <%= link_to 'Back', dashboard_index_path(@bike), class: "btn btn-outline-primary btn-sm mt-3"%>
   </div>
 </div>
+
+

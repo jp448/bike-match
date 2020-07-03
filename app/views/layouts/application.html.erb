@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Shrikhand&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
 </head>
 
@@ -43,14 +42,6 @@
      </ul>
    </div>
  </div>
-
-    <div class="banner" style="background-image: url(https://images.unsplash.com/photo-1574904937426-89a94e79012c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60); object-fit: cover;">
-    <div class="container mb-5">
-      <h1 id="banner-text">Bike Match</h1>
-      <h1 id="banner-text mb-5">Whatever your need is, find a bike that fits you!</h1>
-    </div>
-    </div>
-
 <%= yield %>
 </div>
 <p class="notice"><%= notice %></p>
