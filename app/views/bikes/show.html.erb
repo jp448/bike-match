@@ -1,6 +1,8 @@
-<div class="container">
+<div class="container mt-3">
+  <% if @bike.user == current_user %>
     <p class="text-right mt-5">Edit this bike <span><%= link_to "<i class='fas fa-pencil-alt'></i>".html_safe, edit_bike_path %></span></p>
     <p class="text-right">Delete this bike <span><%= link_to "<i class='far fa-trash-alt'></i>".html_safe, bike_path, method: :delete, data: {confirm: 'Are you sure?'} %></span></p>
+  <% end %>
   <div class="justify-content-center align-items-center">
     <div class="row">
       <div class="col-4">
@@ -30,7 +32,9 @@
               </div>
             </div>
             <div class="card-body">
-              <h5 class="card-title"><%= @bike.title %></h5>
+              <div class="d-flex justify-content-center">
+                <h5 class="card-title"><%= @bike.title %></h5>
+              </div>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Price: €<%= @bike.price %></li>
@@ -38,7 +42,11 @@
               <li class="list-group-item">Location: <%= @bike.location %></li>
             </ul>
             <div class="card-body text-center">
-              <%= link_to "Book this bike now!", new_bike_booking_path(@bike), class: "btn btn-outline-primary" %>
+              <% if user_signed_in? %>
+                <%= link_to "Book this bike now!", new_bike_booking_path(@bike), class: "btn btn-outline-primary", data: {turbolinks: false} %>
+              <% else %>
+                <%= link_to "Log in to Book!", new_user_session_path, class: "btn btn-outline-primary" %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -56,25 +64,31 @@
   <div class="row">
     <div class="col-12">
       <h2 class="title text-center my-5">Reviews For <%= @bike.title %></h2>
-        <ul>
-          <% @bike.reviews.each do |review| %>
-            <li>
-              <div class="card mt-3">
-                <div class="card-header">
-                  <% review.rating.to_i.times do  %>
-                   <span class="star"><i class="fas fa-star"></i></span>
-                  <% end %>
+        <% if @bike.reviews.length > 0  %>
+          <ul>
+            <% @bike.reviews.each do |review| %>
+              <li>
+                <div class="card mt-3">
+                  <div class="card-header">
+                    <% review.rating.to_i.times do  %>
+                     <span class="star"><i class="fas fa-star"></i></span>
+                    <% end %>
+                  </div>
+                  <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                      <p><%= review.content %></p>
+                      <footer class="blockquote-footer"><%= @bike.title %> Customer</footer>
+                    </blockquote>
+                  </div>
                 </div>
-                <div class="card-body">
-                  <blockquote class="blockquote mb-0">
-                    <p><%= review.content %></p>
-                    <footer class="blockquote-footer"><%= @bike.title %> Customer</footer>
-                  </blockquote>
-                </div>
-              </div>
-            </li>
-          <% end %>
-        </ul>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <div class="text-center">
+            <p>Be the first to review <%= @bike.title %></p>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
