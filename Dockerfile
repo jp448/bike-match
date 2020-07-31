@@ -14,8 +14,8 @@ ENV SECRET_KEY_BASE ijsdkagjir34j432435
 ENV RAILS_SERVE_STATIC_FILES true
 ENV MAPBOX_API_KEY pk.eyJ1IjoidmFncDg5IiwiYSI6ImNrYjE1bWV3ejBlbTMycm1lMzhkZHlqMjAifQ.bSqMFAMOjhvRU7uuqpF1mg
 ENV CLOUDINARY_URL cloudinary://345947653987992:tlGXSNoCBY8egZiZ1ABvvYHLI1Y@ds8jpeilli
-RUN RAILS_LOG_TO_STDOUT true bundle exec rails assets:precompile
-
+ENV RAILS_LOG_TO_STDOUT true
+RUN rails assets:precompile
 # Copy the main application.
 COPY . ./
 
