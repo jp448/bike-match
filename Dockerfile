@@ -4,6 +4,7 @@ FROM ruby:2.6.6-alpine
 # Alpine
 RUN apk update && apk add nodejs yarn postgresql-client postgresql-dev tzdata build-base
 WORKDIR /usr/src/app
+RUN gem install bundler:2.1.4
 
 # Set the gemfile and install
 COPY Gemfile* ./
