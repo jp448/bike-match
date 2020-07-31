@@ -11,6 +11,8 @@ COPY Gemfile* ./
 RUN bundle install
 ENV RAILS_ENV production
 ENV SECRET_KEY_BASE ijsdkagjir34j432435
+ENV MAPBOX_API_KEY pk.eyJ1IjoidmFncDg5IiwiYSI6ImNrYjE1bWV3ejBlbTMycm1lMzhkZHlqMjAifQ.bSqMFAMOjhvRU7uuqpF1mg
+ENV CLOUDINARY_URL cloudinary://345947653987992:tlGXSNoCBY8egZiZ1ABvvYHLI1Y@ds8jpeilli
 
 # Copy the main application.
 COPY . ./
