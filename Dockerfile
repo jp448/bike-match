@@ -1,21 +1,22 @@
-FROM ruby:2.6.6
-
-RUN apt-get update -qq && apt-get install -y nodejs yarn postgresql-client
-
-ENV APP_HOME /app
-RUN mkdir $APP_HOME
-WORKDIR $APP_HOME
-
+FROM ruby:2.6.6-alpine
+# Ubuntu
+#RUN apt-get update -qq && apt-get install -y nodejs yarn postgresql-client postgresql-dev
+# Alpine
+RUN apk update && apk add nodejs yarn postgresql-client postgresql-dev tzdata build-base
+RUN mkdir /myapp
+WORKDIR /myapp
 RUN gem install bundler:2.1.4
-COPY Gemfile /app/Gemfile
-COPY Gemfile.lock /app/Gemfile.lock
+COPY Gemfile /myapp/Gemfile
+COPY Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install --deployment --without development test
-COPY . /app
+COPY . /myapp
 RUN bundle exec rake yarn:install
 # Set production environment
-ENV RAILS_ENV production# Assets, to fix missing secret key issue during building
+ENV RAILS_ENV production
+# Assets, to fix missing secret key issue during building
 RUN SECRET_KEY_BASE=dumb bundle exec rails assets:precompile
+# Add a script to be executed every time the container starts.
 EXPOSE 80
-
-WORKDIR $APP_HOME
-CMD ["rails","server","-b","0.0.0.0"]
+# Start the main process.
+WORKDIR /myapp
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
