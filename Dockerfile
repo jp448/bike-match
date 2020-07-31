@@ -9,7 +9,7 @@ RUN gem install bundler:2.1.4
 # Set the gemfile and install
 COPY Gemfile* ./
 RUN bundle install
-ENV RAILS_ENV production
+RUN RAILS_ENV production rails assets:precompile
 ENV SECRET_KEY_BASE ijsdkagjir34j432435
 ENV RAILS_SERVE_STATIC_FILES true
 ENV MAPBOX_API_KEY pk.eyJ1IjoidmFncDg5IiwiYSI6ImNrYjE1bWV3ejBlbTMycm1lMzhkZHlqMjAifQ.bSqMFAMOjhvRU7uuqpF1mg
