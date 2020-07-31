@@ -1,12 +1,12 @@
 FROM ruby:2.6.6-alpine
 # Ubuntu
-RUN apt-get update -qq && apt-get install -y build-essential nodejs yarn
+RUN apt-get update -qq && apt-get install -y nodejs yarn postgresql-client postgresql-dev
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
-RUN gem install bundler:2.1.2
+RUN gem install bundler:2.1.4
 ADD Gemfile* $APP_HOME/
 RUN bundle install
 ENV SECRET_KEY_BASE=dumb
