@@ -22,4 +22,4 @@ EXPOSE 80
 # The main command to run when the container starts. Also
 # tell the Rails dev server to bind to all interfaces by
 # default.
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-port", "80"]
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "--port", "80"]
