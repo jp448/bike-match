@@ -16,9 +16,9 @@ ENV RAILS_ENV production
 # Assets, to fix missing secret key issue during building
 RUN SECRET_KEY_BASE=dumb bundle exec rails assets:precompile 
 # Add a script to be executed every time the container starts.
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+#COPY entrypoint.sh /usr/bin/
+#RUN chmod +x /usr/bin/entrypoint.sh
+#ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 80 
 # Start the main process.
 WORKDIR /myapp
