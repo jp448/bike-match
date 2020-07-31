@@ -81,6 +81,6 @@ test:
 production:
   <<: *default
   url: srv-captain--postgres-db
-  database: _BIKE_MATCH_deployment
+  database: bike_match_depl
   username: postadmin
   password: 2P49ChkN3t4Da}*oa,
