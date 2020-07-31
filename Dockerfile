@@ -9,7 +9,7 @@ RUN gem install bundler:2.1.4
 # Set the gemfile and install
 COPY Gemfile* ./
 RUN bundle install
-#ENV RAILS_ENV production
+ENV RAILS_ENV production
 # Copy the main application.
 COPY . ./
 RUN rake assets:precompile
