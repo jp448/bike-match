@@ -1,6 +1,6 @@
 FROM ruby:2.6.6-alpine
 # Ubuntu
-RUN apt-get update -qq && apt-get install -y nodejs yarn postgresql-client postgresql-dev
+RUN apk update && apk add nodejs yarn postgresql-client postgresql-dev tzdata build-base
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
