@@ -18,6 +18,7 @@ ENV RAILS_LOG_TO_STDOUT true
 ENV RAILS_ENV production
 # Copy the main application.
 COPY . ./
+RUN rake assets:precompile
 
 # Expose port 3000 to the Docker host, so we can access it
 # from the outside.
