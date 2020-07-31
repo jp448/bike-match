@@ -14,7 +14,7 @@ RUN bundle exec rake yarn:install
 # Set production environment
 ENV RAILS_ENV production 
 # Assets, to fix missing secret key issue during building
-RUN SECRET_KEY_BASE=dumb bundle exec rails assets:precompile 
+#RUN SECRET_KEY_BASE=dumb bundle exec rails assets:precompile 
 # Add a script to be executed every time the container starts.
 #COPY entrypoint.sh /usr/bin/
 #RUN chmod +x /usr/bin/entrypoint.sh
