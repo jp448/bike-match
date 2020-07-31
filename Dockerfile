@@ -10,7 +10,7 @@ RUN gem install bundler:2.1.4
 COPY Gemfile* ./
 RUN bundle install
 ENV RAILS_ENV production
-ENV RUN SECRET_KEY_BASE ijsdkagjirj432435
+ENV SECRET_KEY_BASE ijsdkagjirj432435
 
 # Copy the main application.
 COPY . ./
