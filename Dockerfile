@@ -7,6 +7,7 @@ RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
+RUN sudo gem update --system
 RUN bundle install --deployment --without development test
 COPY . /myapp
 RUN bundle exec rake yarn:install# Set production environment
