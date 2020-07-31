@@ -3,21 +3,22 @@ FROM ruby:2.6.6-alpine
 #RUN apt-get update -qq && apt-get install -y nodejs yarn postgresql-client postgresql-dev
 # Alpine
 RUN apk update && apk add nodejs yarn postgresql-client postgresql-dev tzdata build-base
-RUN mkdir /myapp
-WORKDIR /myapp
-RUN gem install bundler:2.1.4
-COPY Gemfile /myapp/Gemfile
-COPY Gemfile.lock /myapp/Gemfile.lock
-RUN bundle install --deployment --without development test
-COPY . /myapp
-RUN bundle exec rake yarn:install
-# Set production environment
+WORKDIR /usr/src/app
+
+# Set the gemfile and install
+COPY Gemfile* ./
+RUN bundle install
 ENV RAILS_ENV production
-ENV RUN SECRET_KEY_BASE=dumb
-# Assets, to fix missing secret key issue during building
-#RUN SECRET_KEY_BASE=dumb bundle exec rails assets:precompile
-# Add a script to be executed every time the container starts.
+ENV RUN SECRET_KEY_BASE ijsdkagjirj432435
+
+# Copy the main application.
+COPY . ./
+
+# Expose port 3000 to the Docker host, so we can access it
+# from the outside.
 EXPOSE 80
-# Start the main process.
-WORKDIR /myapp
+
+# The main command to run when the container starts. Also
+# tell the Rails dev server to bind to all interfaces by
+# default.
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
