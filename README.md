@@ -31,4 +31,3 @@ If I had more time here are the improvements I would make to the app:
 * add unit tests
 * make user photo dynamic
 * improve search bar
-
