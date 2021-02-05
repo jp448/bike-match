@@ -42,9 +42,7 @@ class BikesController < ApplicationController
     end
   end
 
-  def edit;
-  @bike = Bike.find(params[:id])
-  end
+  def edit; end
 
   def update
     if @bike.update(bike_params)
@@ -55,7 +53,6 @@ class BikesController < ApplicationController
   end
 
   def destroy
-    @bike = Bike.find(params[:id])
     @bike.destroy
     redirect_to bikes_path, notice: 'The bike was successfully destroyed.'
   end

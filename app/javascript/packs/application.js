@@ -24,13 +24,15 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import "../plugins/flatpickr";
+import "../plugins/init_flatpickr"
+import { toggleDateInputs } from '../components/booking';
 
 //mapbox code
 import { initMapbox } from '../plugins/init_mapbox';
-
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
 })
+
+toggleDateInputs();
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';

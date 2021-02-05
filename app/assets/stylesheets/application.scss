@@ -7,12 +7,18 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import 'flatpickr/dist/flatpickr.css';
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
 @import 'mapbox-gl/dist/mapbox-gl';
 
+.page-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}
 
 .title {
   font-family: 'Montserrat', sans-serif;

@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
     @booking.bike = @bike
     @booking.user = current_user
     @booking.total_price = (@booking.end_date - @booking.start_date) * @bike.price
-    if @booking.save
+    if @booking.save!
       redirect_to bike_booking_path(@bike, @booking)
     else
       render :new
