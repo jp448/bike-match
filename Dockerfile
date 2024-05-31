@@ -37,7 +37,7 @@ ENV RAILS_DB_PASSWORD $RAILS_DB_PASSWORD
 
 COPY Gemfile* ./
 
-RUN bundle install
+RUN bundle install --full-index
 
 # Copy the main application.
 
