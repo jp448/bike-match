@@ -43,6 +43,8 @@ RUN bundle install
 
 COPY . ./
 
+RUN bundle update
+
 RUN rake assets:precompile
 
 # Expose port 3000 to the Docker host, so we can access it
