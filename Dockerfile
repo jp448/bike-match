@@ -42,6 +42,7 @@ RUN bundle install
 # Copy the main application.
 
 COPY . ./
+RUN bundle update
 
 RUN rake assets:precompile
 
