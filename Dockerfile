@@ -37,8 +37,7 @@ ENV RAILS_DB_PASSWORD $RAILS_DB_PASSWORD
 
 COPY Gemfile* ./
 
-RUN bundle update mimemagic
-RUN bundle install --full-index
+RUN bundle install
 
 # Copy the main application.
 
