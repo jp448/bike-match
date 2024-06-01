@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: _BIKE_MATCH_production
-  username: _BIKE_MATCH
-  password: <%= ENV['_BIKE_MATCH_DATABASE_PASSWORD'] %>
+  host: <%= ENV['RAILS_DB_URL'] %>
+  database: bike_match_depl
+  username: <%= ENV['RAILS_DB_USER'] %>
+  password: <%= ENV['RAILS_DB_PASSWORD'] %>
