@@ -43,6 +43,9 @@ RUN bundle install
 
 COPY . ./
 
+RUN rails db:create
+RUN rails db:migrate
+
 RUN rake assets:precompile
 
 # Expose port 3000 to the Docker host, so we can access it
