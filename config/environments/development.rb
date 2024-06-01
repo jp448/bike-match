@@ -6,6 +6,11 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  # Allow requests to bikematch.sudete.de
+  config.hosts << "bikematch.sudete.de"
+  config.hosts << "bike-match.sudete.de"
+  config.hosts << "bikematch.proctor-webworks.com"
+
   # Do not eager load code on boot.
   config.eager_load = false
 
