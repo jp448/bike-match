@@ -11,7 +11,7 @@ Rails.application.configure do
 
   # Allow requests to bikematch.sudete.de
   config.hosts << "bikematch.sudete.de"
-  config.hosts << "bike-match.sudete.de"
+  config.hosts << "bike-match.captain.sudete.de"
   config.hosts << "bikematch.proctor-webworks.com"
 
   # Do not eager load code on boot. This avoids loading your whole application
